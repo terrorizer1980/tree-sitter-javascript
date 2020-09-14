@@ -1,0 +1,45 @@
+========================
+Safe dereference
+========================
+
+x?.(y);
+
+x ?. (y);
+
+x?.y;
+
+x?.[0];
+
+new function bob (a, b) {} ?.(1, 2);
+
+--------------------
+
+(program
+  (expression_statement
+    (call_expression
+      function: (identifier)
+      arguments: (opt_arguments (identifier))))
+  (expression_statement
+    (call_expression
+      function: (identifier)
+      arguments: (opt_arguments (identifier))))
+  (expression_statement
+    (member_expression
+      object: (identifier)
+      property: (property_identifier)))
+  (expression_statement
+    (subscript_expression
+      object: (identifier)
+      index: (number)))
+  (expression_statement
+    (call_expression
+      function: (new_expression
+        constructor: (function
+          name: (identifier)
+          parameters: (formal_parameters
+            (identifier)
+            (identifier))
+          body: (statement_block)))
+      arguments: (opt_arguments
+        (number)
+        (number)))))
